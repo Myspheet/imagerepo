@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('frontend.index');
+})->name('index');
+
+Route::get('/gallery', function(){
+    return view('frontend.gallery');
+})->name('gallery');
 
 Auth::routes();
 
