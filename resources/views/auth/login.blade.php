@@ -1,73 +1,121 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>{{ config('app.name', 'Laravel') }} - Login</title>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+		<!-- vector map CSS -->
+		<link href="{{asset('vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+		<!-- Custom CSS -->
+		<link href="{{asset('dist/css/style.css')}}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<!--Preloader-->
+		<div class="preloader-it">
+			<div class="la-anim-1"></div>
+		</div>
+		<!--/Preloader-->
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+		<div class="wrapper  pa-0">
+			<header class="sp-header">
+				<div class="sp-logo-wrap pull-left">
+					<a href="{{route('index')}}" style="color:orangered; font-size: 2em">
+						{{ config('app.name', 'Laravel') }}
+					</a>
+				</div>
+				<div class="form-group mb-0 pull-right">
+                    <span class="inline-block pr-10">Don't have an account?</span>
+					<a class="inline-block btn btn-orange btn-rounded " href="{{route('register')}}">Sign Up</a>
+				</div>
+				<div class="clearfix"></div>
+			</header>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+			<!-- Main Content -->
+			<div class="page-wrapper pa-0 ma-0 auth-page">
+				<div class="container">
+					<!-- Row -->
+					<div class="table-struct full-width full-height">
+						<div class="table-cell vertical-align-middle auth-form-wrap">
+							<div class="auth-form  ml-auto mr-auto no-float card-view pt-30 pb-30">
+								<div class="row">
+									<div class="col-sm-12 col-xs-12">
+										<div class="mb-30">
+											<h3 class="text-center txt-dark mb-10">Sign in to {{ config('app.name', 'Laravel') }}</h3>
+											<h6 class="text-center nonecase-font txt-grey">Enter your details below</h6>
+										</div>
+										<div class="form-wrap">
+                                            <form method="POST" action="{{ route('login') }}">
+                                                @csrf
+												<div class="form-group">
+													<label class="control-label mb-10" for="email">Email address</label>
+                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                    @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+												</div>
+												<div class="form-group">
+													<label class="pull-left control-label mb-10" for="exampleInputpwd_2">Password</label>
+													{{-- <a class="capitalize-font txt-orange block mb-10 pull-right font-12" href="forgot-password.html">forgot password ?</a> --}}
+													<div class="clearfix"></div>
+                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                    @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+												</div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+												<div class="form-group">
+													<div class="checkbox checkbox-primary pr-10 pull-left">
+                                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+														<label for="checkbox_2"> Keep me logged in</label>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+												<div class="form-group text-center">
+													<button type="submit" class="btn btn-orange btn-rounded">sign in</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Row -->
+				</div>
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+			</div>
+			<!-- /Main Content -->
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+		</div>
+		<!-- /#wrapper -->
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+		<!-- JavaScript -->
+
+		<!-- jQuery -->
+		<script src="{{asset('vendors/bower_components/jquery/dist/jquery.min.js')}}"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{{asset('vendors/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+		<script src="{{asset('vendors/bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js')}}"></script>
+
+		<!-- Slimscroll JavaScript -->
+		<script src="{{asset('dist/js/jquery.slimscroll.js')}}"></script>
+
+		<!-- Init JavaScript -->
+		<script src="{{asset('dist/js/init.js')}}"></script>
+	</body>
+
+</html>

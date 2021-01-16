@@ -24,3 +24,9 @@ Route::get('/gallery', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::name('dashboard.')->middleware('auth')->namespace('Admin')->prefix('dashboard')->group(function() {
+
+    Route::get('/', 'DashboardController@index')->name('index');
+
+});
