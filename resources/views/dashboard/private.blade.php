@@ -7,7 +7,7 @@
         <div class="panel panel-default card-view">
             <div class="panel-heading">
                 <div class="pull-left">
-                    <h6 class="panel-title txt-dark">Public Album</h6>
+                    <h6 class="panel-title txt-dark">My Private Album</h6>
                 </div>
                 {{-- <div class="pull-right">
                     <a href="{{ route('admin.projects.edit', $project->slug) }}" class="btn btn-rounded btn-warning">Edit Project</a>

@@ -32,8 +32,8 @@ $(function(){
         success: function(file, response)
         {
             // var hello = file.ils');
-            
-            console.log(file.name);
+
+            console.log(response);
             return true
         },
         error: function(file, response)

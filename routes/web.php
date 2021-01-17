@@ -27,6 +27,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::name('dashboard.')->middleware('auth')->namespace('Admin')->prefix('dashboard')->group(function() {
 
-    Route::get('/', 'DashboardController@index')->name('index');
+    Route::get('/', 'ImageController@index')->name('index');
+    Route::get('images/create/public', 'ImageController@createPublic')->name('images.create.public');
+    Route::get('images/create/private', 'ImageController@createPrivate')->name('images.create.private');
+    Route::post('images', 'ImageController@store')->name('images.store');
+    Route::delete('images', 'ImageController@destroy')->name('images.delete');
+    Route::get('images/{image:image}', 'ImageController@getImage');
 
 });

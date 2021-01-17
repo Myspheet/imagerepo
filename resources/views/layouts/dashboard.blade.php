@@ -91,11 +91,17 @@
 						<hr/>
 					</li>
 					<li>
-						<a class="active" href="{{route('dashboard.index')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-dashboard mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+						<a class="active" href="{{route('dashboard.index')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-dashboard mr-20"></i><span class="right-nav-text">Public Images</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
-                    {{-- <li>
-						<a href="{{ route('admin.projects.create') }}"><div class="pull-left"><i class="ti-image mr-20"></i><span class="right-nav-text">Add Project </span></div><div class="pull-right"></div><div class="clearfix"></div></a>
-					</li> --}}
+					<li>
+						<a class="active" href="{{route('dashboard.index')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-dashboard mr-20"></i><span class="right-nav-text">Private Images</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</li>
+                    <li>
+						<a href="{{ route('dashboard.images.create.public') }}"><div class="pull-left"><i class="ti-image mr-20"></i><span class="right-nav-text">Add Public Images </span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</li>
+                    <li>
+						<a href="{{ route('dashboard.images.create.private') }}"><div class="pull-left"><i class="ti-image mr-20"></i><span class="right-nav-text">Add Private Images </span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</li>
 
 					{{-- <li>
 						<a href="{{ route('admin.changepassword') }}" data-toggle="collapse" data-target="#comp_dr"><div class="pull-left"><i class="ti-check-box  mr-20"></i><span class="right-nav-text">Change Password</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
