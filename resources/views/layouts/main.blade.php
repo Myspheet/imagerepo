@@ -69,20 +69,26 @@
               <div class="rd-navbar-nav-wrap">
                 <!-- RD Navbar Nav-->
                 <ul class="rd-navbar-nav">
-                  <li><a href="{{ route('index') }}">Home</a>
-                  </li>
+                    <li><a href="{{ route('index') }}">Home</a>
+                    </li>
 
-                  <li>
-                    <a href="{{ route('gallery') }}">Gallery</a>
-                  </li>
+                    <li>
+                        <a href="{{ route('gallery') }}">Gallery</a>
+                    </li>
 
-                  <li>
-                    <a href="{{ route('login') }}">Login</a>
-                  </li>
+                    @guest
+                        <li>
+                            <a href="{{ route('login') }}">Login</a>
+                        </li>
 
-                  <li>
-                    <a href="{{ route('register') }}">Register</a>
-                  </li>
+                        <li>
+                            <a href="{{ route('register') }}">Register</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('dashboard.index') }}">Dashboard</a>
+                        </li>
+                    @endguest
 
                 </ul>
               </div>

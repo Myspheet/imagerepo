@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -50,7 +51,7 @@ class ImageController extends Controller
         }else {
             $image = Image::create([
                 'user_id' => auth()->user()->id,
-                'public' => false
+                'public' => true
             ]);
             $filenameToStore = $this->uploadImage($request->file('file'), $image->id, 'public');
             $image->image = $filenameToStore;
@@ -100,9 +101,25 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy(Request $request)
     {
         //
+
+        $images = Image::findOrFail($request->delete);
+
+        foreach ($images as $image) {
+                abort_if(auth()->user()->id !== $image->user->id, 403);
+            if($image->public){
+                Storage::delete('public/'.$image->image);
+                $image->delete();
+            }else{
+                Storage::delete('private/'.$image->image);
+                $image->delete();
+            }
+        }
+
+        session()->flash('success', "Image(s) have been deleted successfully");
+        return back();
     }
 
     public function createPublic(Request $request)
@@ -125,12 +142,17 @@ class ImageController extends Controller
 
     public function getImage(Image $image)
     {
-        // dd($file);
-        if(auth()->user()->id !== $image->id){
+        if(auth()->user()->id !== $image->user->id){
             return null;
         }
         $storagePath = storage_path('app/private/' . $image->image);
         return response()->file($storagePath);
     }
+
+    public function delete()
+    {
+        return view('dashboard.delete')->with('images', Image::paginate(30));
+    }
+
 
 }

@@ -53,14 +53,14 @@
 					<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="ti-align-left"></i></a>
 					{{-- <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a> --}}
 					<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="ti-more"></i></a>
-					<form id="search_form" role="search" class="top-nav-search collapse pull-left">
+					{{-- <form id="search_form" role="search" class="top-nav-search collapse pull-left">
 						<div class="input-group">
 							<input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
 							<span class="input-group-btn">
 							<button type="button" class="btn  btn-default"  data-target="#search_form" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
 							</span>
 						</div>
-					</form>
+					</form> --}}
 				</div>
 				<div id="mobile_only_nav" class="mobile-only-nav pull-right">
 					<ul class="nav navbar-right top-nav pull-right">
@@ -91,16 +91,16 @@
 						<hr/>
 					</li>
 					<li>
-						<a class="active" href="{{route('dashboard.index')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-dashboard mr-20"></i><span class="right-nav-text">Public Images</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
-					</li>
-					<li>
-						<a class="active" href="{{route('dashboard.index')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-dashboard mr-20"></i><span class="right-nav-text">Private Images</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+						<a class="active" href="{{route('dashboard.index')}}" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="ti-dashboard mr-20"></i><span class="right-nav-text">Gallery</span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
                     <li>
 						<a href="{{ route('dashboard.images.create.public') }}"><div class="pull-left"><i class="ti-image mr-20"></i><span class="right-nav-text">Add Public Images </span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
                     <li>
 						<a href="{{ route('dashboard.images.create.private') }}"><div class="pull-left"><i class="ti-image mr-20"></i><span class="right-nav-text">Add Private Images </span></div><div class="pull-right"></div><div class="clearfix"></div></a>
+					</li>
+                    <li>
+						<a href="{{ route('dashboard.delete') }}"><div class="pull-left"><i class="ti-image mr-20"></i><span class="right-nav-text">Delete Images </span></div><div class="pull-right"></div><div class="clearfix"></div></a>
 					</li>
 
 					{{-- <li>
@@ -130,7 +130,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6">
-							<p>2020 &copy; Art Dynasty Cleo</p>
+							<p>2020 &copy; {{config('app.name')}}</p>
 						</div>
 					</div>
 				</div>
