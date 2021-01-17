@@ -3,7 +3,7 @@
 
 <head>
 
-  <title>Photo Studio Full Screen</title>
+  <title>{{config('app.name')}}</title>
 
   <meta charset="utf-8">
   <meta name="viewport"
@@ -15,9 +15,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="../cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script>
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="{{asset('image/x-icon')}}">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
@@ -60,9 +58,10 @@
               <!-- RD Navbar Toggle-->
               <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
               <!-- RD Navbar Brand -->
-              <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark"
-                    src="assets/img/logo-dark.png" alt="" width="172" height="32" /><img class="brand-logo-light"
-                    src="assets/img/logo-light.png" alt="" width="172" height="32" /></a>
+              <div class="rd-navbar-brand">
+                 <a class="brand" href="{{route('index')}}">
+                    {{config('app.name')}}
+                </a>
               </div>
             </div>
             <div class="rd-navbar-main-element">
@@ -111,7 +110,7 @@
           <div class="row">
             <div class="col-md-6 col-md-push-6">
 
-              <div class="social-buttons">
+              {{-- <div class="social-buttons">
                 <ul>
                   <li><a href="#" class="btn btn-social-min btn-default btn-link" title="Follow me on Facebook"
                       target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -126,7 +125,7 @@
                   <li><a href="contact.html" class="btn btn-social-min btn-default btn-link" title="Drop me a line"
                       target="_blank"><i class="fa fa-envelope"></i></a></li>
                 </ul>
-              </div>
+              </div> --}}
 
             </div>
             <div class="col-md-6 col-md-pull-6">
